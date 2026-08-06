@@ -1,6 +1,6 @@
 import { AgePreset, AIModelOption, AITool, TransformationResult } from './types';
 import profSungjongRohImg from './assets/images/prof_sungjong_roh_smu.jpg';
-import profRohAgedImg from './assets/images/prof_roh_smu_aged_1785989703045.jpg';
+import profRohAgedImg from './assets/images/prof_roh_smu_aged_accurate_1785989944218.jpg';
 
 export const PROF_SUNGJONG_ROH_IMAGE = profSungjongRohImg;
 export const PROF_ROH_AGED_IMAGE = profRohAgedImg;
