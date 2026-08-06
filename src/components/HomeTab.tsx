@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sparkles, Plus, Cpu, SlidersHorizontal, Download, ArrowRight, ShieldCheck, HeartPulse } from 'lucide-react';
+import { Sparkles, Plus, Cpu, SlidersHorizontal, Download, ArrowRight, ShieldCheck, HeartPulse, Camera } from 'lucide-react';
 import { TabType, TransformationResult } from '../types';
 
 interface HomeTabProps {
