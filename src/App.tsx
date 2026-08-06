@@ -13,6 +13,7 @@ import { ShowcaseTab } from './components/ShowcaseTab';
 import { ExploreTab } from './components/ExploreTab';
 import { ShareModal } from './components/ShareModal';
 import { CameraModal } from './components/CameraModal';
+import { DisqusComments } from './components/DisqusComments';
 import { TabType, AgePreset, AIModelOption, TransformationResult, AITool } from './types';
 import { AGE_PRESETS, AI_MODELS, INITIAL_TRANSFORMATION } from './data';
 
@@ -175,6 +176,9 @@ export default function App() {
             onNavigateToGenerate={() => setCurrentTab('generate')}
           />
         )}
+
+        {/* Disqus Community Discussion Thread */}
+        <DisqusComments />
       </main>
 
       {/* Bottom Navigation for Mobile */}
