@@ -12,6 +12,7 @@ import { GenerateTab } from './components/GenerateTab';
 import { ShowcaseTab } from './components/ShowcaseTab';
 import { ExploreTab } from './components/ExploreTab';
 import { ShareModal } from './components/ShareModal';
+import { CameraModal } from './components/CameraModal';
 import { TabType, AgePreset, AIModelOption, TransformationResult, AITool } from './types';
 import { AGE_PRESETS, AI_MODELS, INITIAL_TRANSFORMATION } from './data';
 
@@ -29,6 +30,7 @@ export default function App() {
   const [transformation, setTransformation] = useState<TransformationResult>(INITIAL_TRANSFORMATION);
   const [isGenerating, setIsGenerating] = useState<boolean>(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
+  const [isCameraOpen, setIsCameraOpen] = useState<boolean>(false);
 
   // Check health endpoint for Gemini API key status
   useEffect(() => {
@@ -43,6 +45,11 @@ export default function App() {
         // Fallback silently if offline or running static
       });
   }, []);
+
+  const handleCameraCapture = (capturedDataUrl: string) => {
+    setUploadedImage(capturedDataUrl);
+    setCurrentTab('generate');
+  };
 
   const handleGenerateTransformation = async () => {
     setIsGenerating(true);
@@ -132,6 +139,7 @@ export default function App() {
           <HomeTab
             onSelectTab={setCurrentTab}
             onUploadClick={() => setCurrentTab('generate')}
+            onCameraClick={() => setIsCameraOpen(true)}
             transformation={transformation}
           />
         )}
@@ -144,6 +152,7 @@ export default function App() {
             onSelectModel={setSelectedModel}
             uploadedImage={uploadedImage}
             onImageChange={setUploadedImage}
+            onOpenCamera={() => setIsCameraOpen(true)}
             customPrompt={customPrompt}
             onPromptChange={setCustomPrompt}
             onGenerate={handleGenerateTransformation}
@@ -172,6 +181,13 @@ export default function App() {
       <BottomNavBar
         currentTab={currentTab}
         onSelectTab={setCurrentTab}
+      />
+
+      {/* Live Camera Capture Modal */}
+      <CameraModal
+        isOpen={isCameraOpen}
+        onClose={() => setIsCameraOpen(false)}
+        onCapture={handleCameraCapture}
       />
 
       {/* Share Modal */}

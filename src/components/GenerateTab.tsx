@@ -10,6 +10,7 @@ interface GenerateTabProps {
   onSelectModel: (model: AIModelOption) => void;
   uploadedImage: string;
   onImageChange: (imageUrl: string) => void;
+  onOpenCamera: () => void;
   customPrompt: string;
   onPromptChange: (prompt: string) => void;
   onGenerate: () => void;
@@ -23,6 +24,7 @@ export const GenerateTab: React.FC<GenerateTabProps> = ({
   onSelectModel,
   uploadedImage,
   onImageChange,
+  onOpenCamera,
   customPrompt,
   onPromptChange,
   onGenerate,
@@ -55,46 +57,67 @@ export const GenerateTab: React.FC<GenerateTabProps> = ({
           Time Travel, Visualized.
         </h2>
         <p className="text-sm text-[#ccc3d8] max-w-md mx-auto leading-relaxed">
-          Upload a photo to see ultra-realistic AI age transformations across different life stages.
+          Snap a live photo or select an image to see realistic AI age progression and active vitality insights.
         </p>
       </div>
 
-      {/* Upload Zone */}
-      <section className="glass-panel rounded-2xl p-6 flex flex-col items-center justify-center text-center border-2 border-dashed border-[#d2bbff]/30 hover:border-[#d2bbff]/60 transition-colors relative overflow-hidden group cursor-pointer min-h-[220px]">
+      {/* Input Selection Zone */}
+      <section className="glass-panel rounded-2xl p-6 flex flex-col items-center justify-center text-center border-2 border-dashed border-[#d2bbff]/30 hover:border-[#d2bbff]/60 transition-colors relative overflow-hidden group min-h-[220px]">
         {uploadedImage ? (
           <div className="relative w-full flex flex-col items-center">
             <div className="relative w-44 h-44 rounded-2xl overflow-hidden border-2 border-[#d2bbff] shadow-xl mb-3">
-              <img src={uploadedImage} alt="Uploaded source" className="w-full h-full object-cover" />
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  fileInputRef.current?.click();
-                }}
-                className="absolute inset-0 bg-black/40 hover:bg-black/60 transition-colors flex flex-col items-center justify-center text-white text-xs font-semibold gap-1 opacity-0 group-hover:opacity-100"
-              >
-                <RefreshCw className="w-5 h-5 text-[#d2bbff]" />
-                <span>Change Image</span>
-              </button>
+              <img src={uploadedImage} alt="Source portrait" className="w-full h-full object-cover" />
             </div>
-            <div className="flex items-center gap-2 text-xs text-[#d2bbff] font-semibold">
+
+            <div className="flex items-center gap-2 text-xs text-[#d2bbff] font-semibold mb-3">
               <CheckCircle className="w-4 h-4 text-emerald-400" />
-              <span>Photo Ready for AI Progression</span>
+              <span>Portrait Loaded for AI Progression</span>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-2">
+              <button
+                onClick={onOpenCamera}
+                className="px-4 py-2 rounded-full bg-[#7c3aed]/30 hover:bg-[#7c3aed]/50 text-[#d2bbff] border border-[#7c3aed]/40 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                <Camera className="w-3.5 h-3.5" />
+                <span>Snap New Photo</span>
+              </button>
+
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="px-4 py-2 rounded-full glass-panel hover:bg-white/10 text-[#ccc3d8] border border-white/10 text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer"
+              >
+                <Upload className="w-3.5 h-3.5" />
+                <span>Upload File</span>
+              </button>
             </div>
           </div>
         ) : (
-          <div
-            onClick={() => fileInputRef.current?.click()}
-            className="flex flex-col items-center justify-center w-full"
-          >
-            <div className="bg-[#2c2833] rounded-full p-4 mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300 text-[#d2bbff]">
-              <ImagePlus className="w-8 h-8 text-[#d2bbff]" />
+          <div className="flex flex-col items-center justify-center w-full space-y-4">
+            <div className="flex gap-3">
+              <button
+                onClick={onOpenCamera}
+                className="p-4 rounded-full bg-[#7c3aed] text-white shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer flex items-center justify-center"
+              >
+                <Camera className="w-7 h-7 text-white" />
+              </button>
+
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="p-4 rounded-full bg-[#2c2833] text-[#d2bbff] shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer flex items-center justify-center border border-white/10"
+              >
+                <ImagePlus className="w-7 h-7 text-[#d2bbff]" />
+              </button>
             </div>
-            <h3 className="text-base font-bold text-[#e8dfee] mb-1">
-              Tap to Upload Image
-            </h3>
-            <p className="text-xs text-[#ccc3d8]">
-              Supports WEBP, JPG, PNG up to 10MB
-            </p>
+
+            <div>
+              <h3 className="text-base font-bold text-[#e8dfee] mb-1">
+                Take Live Selfie or Upload Photo
+              </h3>
+              <p className="text-xs text-[#ccc3d8]">
+                Supports webcam/mobile camera capture or JPG, WEBP, PNG up to 10MB
+              </p>
+            </div>
           </div>
         )}
 

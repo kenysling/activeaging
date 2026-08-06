@@ -5,12 +5,14 @@ import { TabType, TransformationResult } from '../types';
 interface HomeTabProps {
   onSelectTab: (tab: TabType) => void;
   onUploadClick: () => void;
+  onCameraClick: () => void;
   transformation: TransformationResult;
 }
 
 export const HomeTab: React.FC<HomeTabProps> = ({
   onSelectTab,
   onUploadClick,
+  onCameraClick,
   transformation,
 }) => {
   const [activePreview, setActivePreview] = useState<'transformed' | 'original'>('transformed');
@@ -25,7 +27,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
         {/* Top Tag */}
         <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-[#d2bbff]/20 bg-[#d2bbff]/10 text-[#d2bbff] text-xs font-semibold tracking-wide">
           <Sparkles className="w-3.5 h-3.5 text-[#d2bbff] animate-spin-slow" />
-          <span>AI Age Progression</span>
+          <span>AI Age Progression • SMU Active Longevity</span>
         </div>
 
         {/* Main Headline */}
@@ -38,20 +40,30 @@ export const HomeTab: React.FC<HomeTabProps> = ({
 
         {/* Subtitle */}
         <p className="text-base text-[#ccc3d8] max-w-lg leading-relaxed">
-          See your younger, teen, or older self with realistic, AI-generated age transformations and active vitality analysis.
+          Experience ultra-realistic AI age progression with active vitality analysis. Featuring SMU Professor Sungjong Roh's age progression model.
         </p>
 
-        {/* Primary Upload CTA */}
-        <button
-          onClick={onUploadClick}
-          className="mt-2 w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] to-[#0566d9] text-white font-bold text-sm py-3.5 px-8 rounded-full shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 group cursor-pointer"
-        >
-          <Plus className="w-5 h-5 text-white group-hover:rotate-90 transition-transform duration-300" />
-          <span>Upload Image</span>
-        </button>
+        {/* Primary Camera & Upload CTAs */}
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto mt-2">
+          <button
+            onClick={onCameraClick}
+            className="w-full sm:w-auto bg-gradient-to-r from-[#7c3aed] to-[#0566d9] text-white font-extrabold text-sm py-3.5 px-7 rounded-full shadow-[0_0_25px_rgba(124,58,237,0.4)] hover:opacity-90 active:scale-95 transition-all flex items-center justify-center gap-2 group cursor-pointer"
+          >
+            <Camera className="w-5 h-5 text-white group-hover:scale-110 transition-transform" />
+            <span>Take Live Photo</span>
+          </button>
+
+          <button
+            onClick={onUploadClick}
+            className="w-full sm:w-auto glass-panel text-[#e8dfee] hover:text-white font-bold text-sm py-3.5 px-7 rounded-full border border-white/20 hover:bg-white/10 active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <Plus className="w-5 h-5 text-[#d2bbff]" />
+            <span>Upload Image</span>
+          </button>
+        </div>
 
         <p className="text-xs text-[#958da1]">
-          Supports WEBP, JPG, JPEG, PNG, up to 10MB
+          Live Camera Capture or file import (WEBP, JPG, PNG up to 10MB)
         </p>
       </section>
 

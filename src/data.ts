@@ -1,4 +1,9 @@
 import { AgePreset, AIModelOption, AITool, TransformationResult } from './types';
+import profSungjongRohImg from './assets/images/prof_sungjong_roh_1785988887501.jpg';
+import profRohAgedImg from './assets/images/prof_roh_aged_1785988909172.jpg';
+
+export const PROF_SUNGJONG_ROH_IMAGE = profSungjongRohImg;
+export const PROF_ROH_AGED_IMAGE = profRohAgedImg;
 
 export const AGE_PRESETS: AgePreset[] = [
   {
@@ -13,25 +18,25 @@ export const AGE_PRESETS: AgePreset[] = [
     id: 'young-adult',
     label: 'Young Adult',
     ageRange: '20-28 yrs',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLtuRRX0D3trWGkv4JmlpzmvoCKcX66ir6nxgjBGnj_Y5Zyb9yx0_hqaCryCFgvvWCDhdNTOAyS1vSxZrcaNBqFeQtqvPwz8Jtnwe0HdcmXK2xmTK8gryBZlSvH7rdohgl3sSqaFAQ3psbWc2uoURLxXQJoJzxlkiDgi2zY9M9HrjQnqD0JxR7dprjv5eUZCQUn9qEAAzLV70ve6CV5XkIsuHn1Z0yPowiFZse89PqxFdhFv2HwCBVsvnQ',
-    description: 'Peak physical form, defined features, confident look.',
+    image: profSungjongRohImg,
+    description: 'Peak academic form, defined features, confident intellectual look.',
     vitalityScore: 95,
   },
   {
     id: 'middle-age',
     label: 'Middle Age',
     ageRange: '42-52 yrs',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLvdzpqYgDbwwn73Qpp7moX_FiF2dF9z4V0rix_yQqgTCCsij4EPVfQv2CMaMaIW0auHFakow_YZiJCNE1dOJQxIARdthFc8rFcVDU1xThrfyJYBMhT7tPzzpwQZurep-GAE5-Nek_OsSyWWx_sHmSpKBe_rInnvlg3EdhdAcOQPU-zxdjA8sB8jgL6NPMsoj5sOpoa6OVUlTCqwSK7Fr4L9gIDDjo3OuYBdWWjk8gtPIh2TIp3Z1eoWUeU',
-    description: 'Distinguished maturity, subtle laughter lines, refined posture.',
+    image: profSungjongRohImg,
+    description: 'Distinguished SMU faculty maturity, refined posture, subtle wisdom.',
     vitalityScore: 88,
   },
   {
     id: 'senior',
-    label: 'Senior',
+    label: 'Senior Professor',
     ageRange: '68-78 yrs',
-    image: 'https://lh3.googleusercontent.com/aida/AP1WRLumx5Fwq3bLyKi1IZYfcpBAlCk07i7Y98Uu2cOGgkEM6P53WnSmeuixhcfdiOPIFzZ2lG43lRMrdY0elp7YgD2IaTQ5m3GVkQFaUDlQC7Oqii7ZNcA9UnuVVJFuU0yIxttD3IQ217keP-pls1kcDdyTIld5DzWNkSix7USBys1CgQ3qq-kkyLoOLZ8s-ds3YzSJCuc8gl28baWLUXyU6bMNvRVYGAg1uhfZ9dZLeDWJvbIm8aS2k5XH-5w',
-    description: 'Radiant wisdom, elegant silver hair, warm expressive eyes.',
-    vitalityScore: 82,
+    image: profRohAgedImg,
+    description: 'Radiant academic wisdom, elegant silver hair, warm expressive smile.',
+    vitalityScore: 86,
   },
 ];
 
@@ -60,19 +65,19 @@ export const AI_MODELS: AIModelOption[] = [
 ];
 
 export const INITIAL_TRANSFORMATION: TransformationResult = {
-  originalImage: 'https://lh3.googleusercontent.com/aida/AP1WRLuBGvtQcj7pURL_JjIGBp8fjFlUCgY7bOYSdqslVGOLa2hhMkcUAKC_o4GR5HbP-cWKURpAKWAMv75i00IkgcvoMm5Kh7OBdCHMf7DfTtSX-O5CokmzFhPJhFU4Zpnodpt_rezQTbT4XkHAM0gyqNRKbmlUhzbNXgtY5qYvy7E2frVWy69EJm0eT3Hm7UBbEt-toEqhZqvH6oFxMjBsJMTvbXtEE7JOWmYiRoMpR9C4mhR3kT5BWQipNw',
-  transformedImage: 'https://lh3.googleusercontent.com/aida/AP1WRLtGjBzK9n7z1KR36fZxybhQWie447dmQgcAr3P5foTP61DQ687rPkw2_QdH9jjyo1YVQLiPxZHZlxJpleAMzbakjjsFaCj-xE6gzmU6fViy9oO1A52f07cAwi_YYF-3vnZWP40Y68Do-OVAEpen12v3ycMhXToPtZXuZS76puSJlWgIyfpTG8ClrDchgyAVGfGQPSA4ZXqV_vauOzS4E9ucZKZXtlCfhJQdwlFGqd_iNEX-Yf6l2H2lzw',
-  preset: AGE_PRESETS[3], // Senior
+  originalImage: profSungjongRohImg,
+  transformedImage: profRohAgedImg,
+  preset: AGE_PRESETS[3], // Senior Professor
   model: AI_MODELS[0],
   timestamp: Date.now(),
   vitalityInsights: {
     estimatedAge: '72 years young',
-    skinElasticity: 'Optimal for active senior lifestyle',
+    skinElasticity: 'Optimal active faculty lifestyle with high vitality',
     vitalityScore: 86,
     wellnessRecommendations: [
-      'Maintain daily resistance training to preserve bone density.',
-      'Incorporate antioxidant-rich foods for skin radiance.',
-      'Stay hydrated with 2.5L water daily to support collagen health.'
+      'Maintain active walking seminars across SMU campus.',
+      'Incorporate antioxidant-rich tea and balanced nutrition.',
+      'Engage in daily mental stimulation and active academic research.'
     ]
   },
   adjustments: {
