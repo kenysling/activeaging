@@ -1,0 +1,6 @@
+{
+  "name": "Active Aging App",
+  "description": "AI-powered age progression and vitality transformation app with interactive comparison slider, age presets, AI generation, and image editing tools.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
