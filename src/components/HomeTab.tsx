@@ -40,7 +40,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
 
         {/* Subtitle */}
         <p className="text-base text-[#ccc3d8] max-w-lg leading-relaxed">
-          Experience ultra-realistic AI age progression with active vitality analysis. Featuring SMU Professor Sungjong Roh's age progression model.
+          Experience ultra-realistic AI age progression with active vitality analysis and studio quality stock transformations.
         </p>
 
         {/* Primary Camera & Upload CTAs */}

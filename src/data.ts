@@ -1,9 +1,9 @@
 import { AgePreset, AIModelOption, AITool, TransformationResult } from './types';
-import profSungjongRohImg from './assets/images/prof_sungjong_roh_smu.jpg';
-import profRohAgedImg from './assets/images/prof_roh_smu_aged_matching_angle_1785991254972.jpg';
+import stockPortraitYoungImg from './assets/images/stock_portrait_young_1786066045283.jpg';
+import stockPortraitSeniorImg from './assets/images/stock_portrait_senior_1786066063079.jpg';
 
-export const PROF_SUNGJONG_ROH_IMAGE = profSungjongRohImg;
-export const PROF_ROH_AGED_IMAGE = profRohAgedImg;
+export const STOCK_PORTRAIT_YOUNG_IMAGE = stockPortraitYoungImg;
+export const STOCK_PORTRAIT_SENIOR_IMAGE = stockPortraitSeniorImg;
 
 export const AGE_PRESETS: AgePreset[] = [
   {
@@ -18,7 +18,7 @@ export const AGE_PRESETS: AgePreset[] = [
     id: 'young-adult',
     label: 'Young Adult',
     ageRange: '20-28 yrs',
-    image: profSungjongRohImg,
+    image: stockPortraitYoungImg,
     description: 'Peak academic form, defined features, confident intellectual look.',
     vitalityScore: 95,
   },
@@ -26,15 +26,15 @@ export const AGE_PRESETS: AgePreset[] = [
     id: 'middle-age',
     label: 'Middle Age',
     ageRange: '42-52 yrs',
-    image: profSungjongRohImg,
-    description: 'Distinguished SMU faculty maturity, refined posture, subtle wisdom.',
+    image: stockPortraitYoungImg,
+    description: 'Distinguished faculty maturity, refined posture, subtle wisdom.',
     vitalityScore: 88,
   },
   {
     id: 'senior',
     label: 'Senior Professor',
     ageRange: '68-78 yrs',
-    image: profRohAgedImg,
+    image: stockPortraitSeniorImg,
     description: 'Radiant academic wisdom, elegant silver hair, warm expressive smile.',
     vitalityScore: 86,
   },
@@ -65,19 +65,19 @@ export const AI_MODELS: AIModelOption[] = [
 ];
 
 export const INITIAL_TRANSFORMATION: TransformationResult = {
-  originalImage: profSungjongRohImg,
-  transformedImage: profRohAgedImg,
+  originalImage: stockPortraitYoungImg,
+  transformedImage: stockPortraitSeniorImg,
   preset: AGE_PRESETS[3], // Senior Professor
   model: AI_MODELS[0],
   timestamp: Date.now(),
   vitalityInsights: {
     estimatedAge: '72 years young',
-    skinElasticity: 'Optimal active faculty lifestyle with high vitality',
+    skinElasticity: 'Optimal active lifestyle with high vitality',
     vitalityScore: 86,
     wellnessRecommendations: [
-      'Maintain active walking seminars across SMU campus.',
+      'Maintain active walking routines across campus.',
       'Incorporate antioxidant-rich tea and balanced nutrition.',
-      'Engage in daily mental stimulation and active academic research.'
+      'Engage in daily mental stimulation and active research.'
     ]
   },
   adjustments: {
