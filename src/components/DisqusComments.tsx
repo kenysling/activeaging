@@ -27,15 +27,27 @@ export const DisqusComments: React.FC<DisqusCommentsProps> = ({
 
       // Handle window script errors from cross-origin disqus scripts gracefully
       const handleGlobalError = (event: ErrorEvent) => {
-        if (event.message && (event.message.includes('Script error') || event.message.includes('disqus'))) {
+        if (event.message && (event.message.includes('Script error') || event.message.includes('disqus') || event.message.includes('clarity'))) {
           // Suppress cross-origin script error from bubbling as breaking app crash
           if (isMounted) {
-            console.warn('Disqus script loading notice:', event.message);
+            console.warn('Third-party script notice intercepted:', event.message);
+          }
+          if (typeof event.preventDefault === 'function') {
+            event.preventDefault();
+          }
+        }
+      };
+
+      const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+        if (event.reason && (String(event.reason).includes('disqus') || String(event.reason).includes('Script error'))) {
+          if (typeof event.preventDefault === 'function') {
+            event.preventDefault();
           }
         }
       };
 
       window.addEventListener('error', handleGlobalError);
+      window.addEventListener('unhandledrejection', handleUnhandledRejection);
 
       // If DISQUS is already loaded on window, reset with new config
       if (typeof (window as any).DISQUS !== 'undefined') {
@@ -83,6 +95,7 @@ export const DisqusComments: React.FC<DisqusCommentsProps> = ({
       return () => {
         isMounted = false;
         window.removeEventListener('error', handleGlobalError);
+        window.removeEventListener('unhandledrejection', handleUnhandledRejection);
       };
     } catch (err) {
       console.warn('Disqus initialization error caught:', err);
